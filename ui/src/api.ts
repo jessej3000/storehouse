@@ -5,7 +5,7 @@
 
 import { User } from './types';
 
-const API_BASE_URL = (import.meta as any).env?.VITE_API_BASE_URL ?? 'http://localhost:3001';
+const API_BASE_URL = (import.meta as any).env?.VITE_API_BASE_URL ?? 'https://storehouse-xbed.onrender.com';
 
 export interface ApiUser {
   id: number;
