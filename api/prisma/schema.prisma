@@ -1,0 +1,87 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         Int    @id @default(autoincrement())
+  email      String @unique
+  password   String
+  role       String  @default("member")
+  active     Boolean @default(false)
+  firstname  String
+  lastname   String
+  gender     String
+  address    String
+  contact    String
+  stake_id   Int
+  ward_id    Int
+
+  stake      Stake     @relation(fields: [stake_id], references: [id])
+  ward       Ward      @relation(fields: [ward_id], references: [id])
+  donations  Donation[]
+
+  @@map("Users")
+}
+
+model Stake {
+  id   Int    @id @default(autoincrement())
+  name String
+
+  wards     Ward[]
+  users     User[]
+  donations Donation[]
+
+  @@map("Stake")
+}
+
+model Ward {
+  id       Int    @id @default(autoincrement())
+  name     String
+  stake_id Int
+
+  stake     Stake      @relation(fields: [stake_id], references: [id])
+  users     User[]
+  donations Donation[]
+
+  @@map("Ward")
+}
+
+model Category {
+  id   Int    @id @default(autoincrement())
+  name String
+
+  donations Donation[]
+
+  @@map("Category")
+}
+
+model Donation {
+  id          Int      @id @default(autoincrement())
+  name        String
+  count       Int
+  expiration  DateTime
+  status      String   @default("available")
+  createdAt   DateTime @default(now())
+  stake_id    Int
+  ward_id     Int
+  user_id     Int
+  category_id Int
+
+  stake    Stake    @relation(fields: [stake_id], references: [id])
+  ward     Ward     @relation(fields: [ward_id], references: [id])
+  user     User     @relation(fields: [user_id], references: [id])
+  category Category @relation(fields: [category_id], references: [id])
+
+  @@map("donations")
+}

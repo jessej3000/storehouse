@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -d /Users/jessejunsay/.nvm/versions/node/*/bin 2>&1)",
+      "Read(//Users/jessejunsay/.nvm/versions/node/**)",
+      "Bash(rm -rf /private/tmp/claude-501/-Users-jessejunsay-Documents-projects-storehouse/ae7df261-b4c6-4dc1-9924-8f168bcf5313/scratchpad/pw-test/node_modules)",
+      "Bash(rm -f /private/tmp/claude-501/-Users-jessejunsay-Documents-projects-storehouse/ae7df261-b4c6-4dc1-9924-8f168bcf5313/scratchpad/pw-test/*.png)"
+    ]
+  }
+}

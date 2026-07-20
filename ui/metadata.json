@@ -1,0 +1,6 @@
+{
+  "name": "Tugbok Ward Storehouse",
+  "description": "Storehouse Management System for Tugbok Ward, featuring a member portal for donations and admin overview for inventory control.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
