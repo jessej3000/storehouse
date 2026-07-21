@@ -7,7 +7,6 @@
 // }
 
 // execSync('node dist/main.js', { stdio: 'inherit' });
-#!/usr/bin/env node
 const { execSync } = require('child_process');
 
 if (process.env.MIGRATE === 'true') {
